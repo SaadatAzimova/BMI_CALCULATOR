@@ -18,7 +18,7 @@ public class HelloController {
     private ChoiceBox<String> unitChoice;
     @FXML
     public void initialize() {
-        unitChoice.setItems(FXCollections.observableArrayList("Metric (kg/m)", " English (lb/in)"));
+        unitChoice.setItems(FXCollections.observableArrayList("Metric (kg/m)", "English (lb/in)"));
         unitChoice.setValue("Metric (kg/m)");
     }
     @FXML
@@ -32,21 +32,20 @@ public class HelloController {
         } else if ("English (lb/in)".equals(unit)) {
             bmi = (weightValue * 703) / Math.pow(heightValue, 2);
         }
-        String status = " ";
+        String status ="";
 
         if(bmi<18.5) {
-            status="Underweight:";
+            status="Underweight";
         }
-        if(bmi>=18.5 && bmi<=24.9) {
-            status="Normal:";
+        else if(bmi>=18.5 && bmi<=24.9) {
+            status="Normal";
         }
-        if(bmi>=25 && bmi<=29.9) {
-            status="Overweight:";
+        else if(bmi>=25 && bmi<=29.9) {
+            status="Overweight";
         }
-        if(bmi>=30) {
+        else if(bmi>=30) {
             status="Obese:";
         }
         result.setText(String.format("%s: %.2f", status, bmi));
-
     }
 }

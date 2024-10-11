@@ -13,7 +13,7 @@
     </padding>
 
     <Label fx:id="welcomeText" prefHeight="40.0" prefWidth="104.0" text="BMI calculator" />
-   <Label fx:id="result" onDragDetected="#onButtonClick" prefHeight="18.0" prefWidth="8.0" />
+   <Label fx:id="result" onDragDetected="#onButtonClick" prefHeight="18.0" prefWidth="117.0" />
    <ChoiceBox fx:id="unitChoice" onDragDetected="#onButtonClick" prefWidth="150.0" />
    <TextField fx:id="weight" style="-fx-background-color: #f8bcd0;" />
    <TextField fx:id="height" style="-fx-background-color: #f8bcd0;" />
