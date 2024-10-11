@@ -1,6 +1,8 @@
 package org.example.bmicalculator;
 
 import javafx.fxml.FXML;
+import javafx.collections.FXCollections;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -12,24 +14,39 @@ public class HelloController {
     @FXML private TextField height;
     @FXML
     private Label result;
-
+    @FXML
+    private ChoiceBox<String> unitChoice;
+    @FXML
+    public void initialize() {
+        unitChoice.setItems(FXCollections.observableArrayList("Metric (kg/m)", " English (lb/in)"));
+        unitChoice.setValue("Metric (kg/m)");
+    }
     @FXML
     protected void onButtonClick() {
-        double weigt_kg = Double.parseDouble(weight.getText());
-        double h = Double.parseDouble(height.getText());
-        double metric = weigt_kg / Math.pow(h, 2);
-        if(metric<18.5) {
-            result.setText("Underweight:"+String.valueOf(metric));
+        double weightValue = Double.parseDouble(weight.getText());
+        double heightValue = Double.parseDouble(height.getText());
+        String unit = unitChoice.getValue();
+        double bmi=0;
+        if ("Metric (kg/m)".equals(unit)) {
+            bmi = weightValue / Math.pow(heightValue, 2);
+        } else if ("English (lb/in)".equals(unit)) {
+            bmi = (weightValue * 703) / Math.pow(heightValue, 2);
         }
-        if(metric>=18.5 && metric<=24.9) {
-            result.setText("Normal:"+String.valueOf(metric));
+        String status = " ";
+
+        if(bmi<18.5) {
+            status="Underweight:";
         }
-        if(metric>=25 && metric<=29.9) {
-            result.setText("Overweight:"+String.valueOf(metric));
+        if(bmi>=18.5 && bmi<=24.9) {
+            status="Normal:";
         }
-        if(metric>=30) {
-            result.setText("Obese:"+String.valueOf(metric));
+        if(bmi>=25 && bmi<=29.9) {
+            status="Overweight:";
         }
+        if(bmi>=30) {
+            status="Obese:";
+        }
+        result.setText(String.format("%s: %.2f", status, bmi));
 
     }
 }
