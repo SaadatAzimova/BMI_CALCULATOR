@@ -16,6 +16,12 @@ File:
   Clear: Clears input fields and resets the choice box.
 Help:
   About: Displays information on how to use the BMI calculator.
+
+
+
+
+
+  
 ![BMI_start](https://github.com/user-attachments/assets/703ed16e-8ce5-4eb7-a8be-68696b9beb76)
   ![BMI_metric_units](https://github.com/user-attachments/assets/bca744ca-c599-4888-9a50-92db15c33fea)
   ![BMI_english_units](https://github.com/user-attachments/assets/9d1ee13c-72cc-49de-82f0-e06a5d61a05f)
